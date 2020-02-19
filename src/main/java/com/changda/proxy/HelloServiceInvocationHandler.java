@@ -11,7 +11,7 @@ import java.lang.reflect.Proxy;
  * @author: 南街
  * @create: 2019-12-24 11:33
  **/
-public class HelloServiceJdkProxy implements InvocationHandler {
+public class HelloServiceInvocationHandler implements InvocationHandler {
     private Object target;
 
     public Object bind(Object target){
@@ -21,7 +21,7 @@ public class HelloServiceJdkProxy implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println("############我是动态代理##############");
+        System.out.println("############我是jdk动态代理##############");
         Object result = null;
         System.out.println("我准备说hello");
         result = method.invoke(target,args);

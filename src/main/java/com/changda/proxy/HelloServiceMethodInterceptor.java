@@ -22,7 +22,7 @@ public class HelloServiceMethodInterceptor implements MethodInterceptor {
 
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-        System.out.println("cglib动态代理");
+        System.out.println("我是cglib动态代理");
         /**
          * 这里需要注意invoke和invokeSuper的区别
          */

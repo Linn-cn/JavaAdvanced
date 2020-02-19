@@ -1,4 +1,4 @@
-package com.changda.concurrency;
+package com.changda.juc;
 
 import java.util.Arrays;
 import java.util.Collections;

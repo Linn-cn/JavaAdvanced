@@ -11,14 +11,19 @@ import java.lang.reflect.Method;
  **/
 public class classLoad {
     public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InstantiationException {
-        Class<?> simple = Class.forName("com.changda.classloader.Simple");
-        Method simpleSout = simple.getMethod("simpleSout", Simple.class);
-        Class<Simple> aClass = Simple.class;
-        Simple simple1 = (Simple) simple.newInstance();
-        simple1.simpleSout();
-        simple1.simpleSout();
-        Class<?> aClass1 = ClassLoader.getSystemClassLoader().loadClass("com.changda.classloader.Simple");
-        Simple simple11 = (Simple) aClass.newInstance();
-        simple1.simpleSout();
+        // case 1: forName不仅会加载类并且会初始化类
+//        Class<?> simple = Class.forName("com.changda.classloader.Simple");
+//        System.out.println("-------------------------------------------");
+//        Simple simple1 = (Simple) simple.newInstance();
+//        simple1.simpleSout();
+//        System.out.println("-------------------------------------------");
+        // case 2:
+//        Class<Simple> simple = Simple.class;
+//        Simple simple1 = simple.newInstance();
+//        simple1.simpleSout();
+        // case 3:
+//        Class<?> simple = ClassLoader.getSystemClassLoader().loadClass("com.changda.classloader.Simple");
+//        Simple simple1 = (Simple) simple.newInstance();
+//        simple1.simpleSout();
     }
 }

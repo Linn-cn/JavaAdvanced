@@ -10,7 +10,7 @@ import net.sf.cglib.proxy.Enhancer;
  * @author: 南街
  * @create: 2020-02-01 20:29
  **/
-public class HelloServiceCglib {
+public class HelloServiceCglibMain {
     public static void main(String[] args) {
         System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "D:\\proxy");
         HelloServiceImpl helloService = new HelloServiceImpl();

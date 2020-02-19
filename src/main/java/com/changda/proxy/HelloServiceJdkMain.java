@@ -9,8 +9,8 @@ package com.changda.proxy;
  **/
 public class HelloServiceJdkMain {
     public static void main(String[] args) {
-        HelloServiceJdkProxy helloServiceJdkProxy = new HelloServiceJdkProxy();
-        HelloService proxy = (HelloService) helloServiceJdkProxy.bind(new HelloServiceImpl());
+        HelloServiceInvocationHandler helloServiceInvocationHandler = new HelloServiceInvocationHandler();
+        HelloService proxy = (HelloService) helloServiceInvocationHandler.bind(new HelloServiceImpl());
         proxy.sayHello("张三");
         proxy.sayHello1("李四");
     }
