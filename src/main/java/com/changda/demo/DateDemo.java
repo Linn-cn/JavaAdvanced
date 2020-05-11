@@ -2,10 +2,13 @@ package com.changda.demo;
 
 import org.junit.Test;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -16,6 +19,13 @@ import java.util.concurrent.TimeUnit;
  * @create: 2019-12-09 11:00
  **/
 public class DateDemo {
+
+    @Test
+    public void dateFormatter() throws ParseException {
+        String ceshi = "2020-04-09";
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = format.parse(ceshi);
+    }
 
     @Test
     public void LocalDateTimeDemo() {
@@ -82,6 +92,14 @@ public class DateDemo {
     }
 
     @Test
+    public void compareInstant() throws InterruptedException {
+        long putDate = Instant.now().toEpochMilli();
+        TimeUnit.SECONDS.sleep(4);
+        System.out.println(Duration.between(Instant.ofEpochMilli(putDate),Instant.now()).toHours());
+    }
+
+
+    @Test
     public void durationDemo() {
         //Duration 计算时间的距离
         LocalTime now = LocalTime.now();
@@ -94,7 +112,7 @@ public class DateDemo {
 
         //period计算日期的距离
         LocalDate nowDate = LocalDate.now();
-        LocalDate date = LocalDate.of(1998, 8, 8);
+        LocalDate date = LocalDate.of(2020, 3, 1);
         Period period = Period.between(date, nowDate);
         System.out.println(period.getYears());
         System.out.println(period.getMonths());

@@ -3,8 +3,9 @@ package com.changda.lock;
 import java.util.concurrent.TimeUnit;
 
 class Phone{
-    public static synchronized void sendEmail(){
+    public synchronized void sendEmail(){
         try {
+            System.out.println("进来了");
             TimeUnit.SECONDS.sleep(4);
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -47,11 +48,10 @@ public class Lock8 {
                 e.printStackTrace();
             }
         },"A").start();
-        TimeUnit.SECONDS.sleep(3);
+        TimeUnit.SECONDS.sleep(1);
         new Thread(() ->{
             try {
-//                phone.sendSMS();
-                phone2.sendSMS();
+                phone1.sendSMS();
             } catch (Exception e) {
                 e.printStackTrace();
             }

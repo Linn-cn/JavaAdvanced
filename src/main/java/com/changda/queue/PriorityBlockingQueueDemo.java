@@ -5,7 +5,7 @@ import java.util.concurrent.PriorityBlockingQueue;
 /**
  * @program: JucAndJvm
  * @classname: PriorityBlockingQueueDemo
- * @description:
+ * @description: 优先级阻塞队列，它是线程安全的
  * @author: 南街
  * @create: 2020-01-01 17:49
  **/
@@ -14,7 +14,7 @@ public class PriorityBlockingQueueDemo {
         PriorityBlockingQueue<Object> blockingQueue = new PriorityBlockingQueue<>(2);
         // put方法不阻塞，因为无界，不限制大小，自动扩容
         // offer方法不限制
-        // 默认情况下按自然排序升序排列，可以传递Comparator
+        // 默认情况下按自然排序降序排列，可以传递Comparator
         blockingQueue.put(9);
         blockingQueue.put(1);
         blockingQueue.put(8);

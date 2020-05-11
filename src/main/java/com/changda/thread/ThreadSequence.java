@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @program: JucAndJvm
  * @classname: ThreadSequence
- * @description:
+ * @description:  保证线程的有序执行
  * @author: 南街
  * @create: 2019-12-22 12:07
  **/

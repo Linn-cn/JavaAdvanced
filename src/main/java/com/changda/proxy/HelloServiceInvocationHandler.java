@@ -22,9 +22,8 @@ public class HelloServiceInvocationHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("############我是jdk动态代理##############");
-        Object result = null;
         System.out.println("我准备说hello");
-        result = method.invoke(target,args);
+        Object result = method.invoke(target,args);
         System.out.println("我说过hello了");
         return result;
     }
