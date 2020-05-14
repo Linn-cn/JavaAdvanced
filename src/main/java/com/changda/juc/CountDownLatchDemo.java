@@ -1,4 +1,4 @@
-package com.changda.collection.juc;
+package com.changda.juc;
 
 import java.util.concurrent.CountDownLatch;
 

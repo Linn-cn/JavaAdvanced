@@ -1,4 +1,4 @@
-package com.changda.queue;
+package com.changda.collection.queue;
 
 import java.util.concurrent.PriorityBlockingQueue;
 

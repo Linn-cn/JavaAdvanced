@@ -60,7 +60,7 @@ public class SynchronizedDemo {
          * 锁消除的主要判定依据来源于逃逸分析的数据支持，如果判断在一段代码中，堆上的所有数据都不会逃逸出去从而被其他线程访问到，
          * 那就可以把它们当做栈上数据对待，认为它们是线程私有的，同步加锁自然就无须进行
          * 例如下面，不管多少个线程进来，new StringBuffer都是不同的对象，就不存在数据竞争，
-         * 那么此时的synchronized关键字会被消除
+         * 那么此时的synchronized关键字会被消除 也即"锁消除"
          */
         return new StringBuffer().append(s1).append(s2).append(s3).toString();
     }

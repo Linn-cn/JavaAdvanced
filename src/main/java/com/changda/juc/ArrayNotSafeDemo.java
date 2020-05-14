@@ -1,4 +1,4 @@
-package com.changda.collection.juc;
+package com.changda.juc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @author: 南街
  * @create: 2019-11-21 21:48
  **/
-public class NotSafeDemo {
+public class ArrayNotSafeDemo {
     public static void main(String[] args) {
         /**
          * 故障现象 ConcurrentModificationException

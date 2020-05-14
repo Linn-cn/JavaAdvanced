@@ -1,4 +1,4 @@
-package com.changda.demo;
+package com.changda.tcp.nio;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,7 +15,7 @@ import java.nio.channels.FileChannel;
  * @author: 南街
  * @create: 2019-12-09 12:20
  **/
-public class NIODemo {
+public class NIOCopyFileDemo {
     public static void main(String[] args) throws URISyntaxException, IOException {
 //        copyFile(new File("D:\\111.txt"), new File("D:\\test.txt"));
         copyFileByBuffer(new File("D:\\111.txt"), new File("D:\\test.txt"));

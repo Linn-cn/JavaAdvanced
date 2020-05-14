@@ -7,8 +7,8 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 class MyCache {
-    private volatile Map<String, Object> map = new HashMap<>();
-    private ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+    private final Map<String, Object> map = new HashMap<>();
+    private final ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
 
     public void put(String key, Object value) {
         readWriteLock.writeLock().lock();

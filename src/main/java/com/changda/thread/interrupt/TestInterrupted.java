@@ -1,4 +1,4 @@
-package com.changda.lock.luban;
+package com.changda.thread.interrupt;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
@@ -10,7 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author: 南街
  * @create: 2020-01-26 15:32
  **/
-public class Test {
+public class TestInterrupted {
     static ReentrantLock lock = new ReentrantLock();
     public static void main(String[] args) throws InterruptedException {
         Thread t1 = new Thread(() -> {
