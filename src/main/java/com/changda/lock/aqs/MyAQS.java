@@ -27,7 +27,20 @@ public class MyAQS {
     }
 
     public void acquireShared(){
-
+        boolean addQ = true;
+        while (tryAcquireShared() < 0) {
+            if (addQ) {
+                // 没拿到锁，加入到等待集合
+                waiters.offer(Thread.currentThread());
+                addQ = false;
+            } else {
+                // 阻塞 挂起当前的线程，不要继续往下跑了
+                LockSupport.park(); // 伪唤醒，就是非unpark唤醒的
+            }
+        }
+        if(!addQ){
+            waiters.remove(Thread.currentThread()); // 把线程移除
+        }
     }
 
     public boolean tryReleaseShared(){
@@ -37,9 +50,7 @@ public class MyAQS {
     public void releaseShared(){
         if (tryReleaseShared()) {
             // 通知等待者
-            Iterator<Thread> iterator = waiters.iterator();
-            while (iterator.hasNext()) {
-                Thread next = iterator.next();
+            for (Thread next : waiters) {
                 LockSupport.unpark(next); // 唤醒
             }
         }

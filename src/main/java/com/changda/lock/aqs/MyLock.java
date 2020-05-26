@@ -77,9 +77,10 @@ public class MyLock implements Lock {
     @Override
     public void unlock() {
         // 释放锁
-        int i = state.decrementAndGet();
+        int i = state.get() - 1;
         if (i == 0) {
             if (owner.compareAndSet(Thread.currentThread(), null)) {
+                state.decrementAndGet();
                 System.out.println(Thread.currentThread().getName() + "释放锁");
                 // 通知等待者
                 for (Thread next : waiters) {

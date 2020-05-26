@@ -9,6 +9,7 @@ public class SemaphoreDemo {
     public static void main(String[] args) {
         SemaphoreDemo semaphoreDemo = new SemaphoreDemo();
         int N = 9;            // 客人数量
+//        NeteaseSemaphore semaphore = new NeteaseSemaphore(5); // 手牌数量，限制请求数量
         Semaphore semaphore = new Semaphore(5); // 手牌数量，限制请求数量
         for (int i = 0; i < N; i++) {
             String vipNo = "vip-00" + i;

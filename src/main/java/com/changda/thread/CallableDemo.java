@@ -18,7 +18,7 @@ class MyThread implements Callable<Integer>{
 /**
  * @program: JucAndJvm
  * @classname: CallableDemo
- * @description:
+ * @description: 可返回值的线程，跟Runnable不一样
  * @author: 南街
  * @create: 2019-11-24 12:53
  **/

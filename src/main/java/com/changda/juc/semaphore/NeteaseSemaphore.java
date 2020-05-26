@@ -3,7 +3,10 @@ package com.changda.juc.semaphore;
 
 import com.changda.lock.aqs.MyAQS;
 
-// 自定义的信号量实现
+/**
+ * 自定义的信号量实现
+ * @date 2020/5/14 18:55
+ */
 public class NeteaseSemaphore {
     MyAQS aqs = new MyAQS() {
         @Override

@@ -1,4 +1,4 @@
-package com.changda.juc;
+package com.changda.juc.cdl;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -29,7 +29,6 @@ public class CountDownLatchDemo {
                 System.out.println(Thread.currentThread().getName() + "\t离开教室");
             },String.valueOf(i)).start();
         }
-
         System.out.println(Thread.currentThread().getName() + "\t班长关门走人");
     }
 }
