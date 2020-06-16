@@ -11,7 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author: 南街
  * @create: 2020-01-26 15:32
  **/
-public class TestPark {
+public class LockSupportParkDemo {
     public static void main(String[] args) {
         Thread t1 = new Thread(() -> {
             LockSupport.park();

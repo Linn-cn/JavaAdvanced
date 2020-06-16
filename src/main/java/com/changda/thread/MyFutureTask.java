@@ -22,6 +22,7 @@ public class MyFutureTask<T> implements Runnable {
 
     // 返回结果
     public T get() {
+        // 如果没有结束，那么调用get方法的线程，就应该进入等待
         return result;
     }
 

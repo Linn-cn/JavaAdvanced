@@ -1,6 +1,5 @@
 package com.changda.lock.aqs;
 
-import java.util.Iterator;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -13,7 +12,7 @@ import java.util.concurrent.locks.LockSupport;
  * @author 南街
  * @program JavaAdvanced
  * @classname MyLock
- * @description
+ * @description 模仿并实现一个可重入的锁
  * @create 2020-05-13 20:24
  **/
 public class MyLock implements Lock {
@@ -40,7 +39,7 @@ public class MyLock implements Lock {
                 LockSupport.park();
             }
         }
-        if(!addQueue){
+        if (!addQueue) {
             waiters.remove(Thread.currentThread()); // 把线程移除
         }
         System.out.println(thread.getName() + "获得锁");
@@ -57,7 +56,7 @@ public class MyLock implements Lock {
         // 判断锁状态是不是0
         if (state.get() == 0) {
             // 尝试修改锁持有线程
-            if (owner.compareAndSet(null, thread)){
+            if (owner.compareAndSet(null, thread)) {
                 state.incrementAndGet();
                 return true;
             }
@@ -77,11 +76,9 @@ public class MyLock implements Lock {
     @Override
     public void unlock() {
         // 释放锁
-        int i = state.get() - 1;
+        int i = state.decrementAndGet();
         if (i == 0) {
             if (owner.compareAndSet(Thread.currentThread(), null)) {
-                state.decrementAndGet();
-                System.out.println(Thread.currentThread().getName() + "释放锁");
                 // 通知等待者
                 for (Thread next : waiters) {
                     LockSupport.unpark(next); // 唤醒
@@ -97,17 +94,4 @@ public class MyLock implements Lock {
         return null;
     }
 
-    public static void main(String[] args) {
-        new Thread(() -> {
-            System.out.println("线程1运行");
-            try {
-                TimeUnit.SECONDS.sleep(3);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
-        new Thread(() -> {
-            System.out.println("线程2运行");
-        }).start();
-    }
 }

@@ -17,11 +17,11 @@ public class classLoad {
 //        Simple simple1 = (Simple) simple.newInstance();
 //        simple1.simpleSout();
 //        System.out.println("-------------------------------------------");
-        // case 2:
+        // case 2: 不会初始化类
 //        Class<Simple> simple = Simple.class;
 //        Simple simple1 = simple.newInstance();
 //        simple1.simpleSout();
-        // case 3:
+        // case 3: 不会初始化类
 //        Class<?> simple = ClassLoader.getSystemClassLoader().loadClass("com.changda.classloader.Simple");
 //        Simple simple1 = (Simple) simple.newInstance();
 //        simple1.simpleSout();

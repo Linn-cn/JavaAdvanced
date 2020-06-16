@@ -49,6 +49,16 @@ public class ExecutorsDemo {
          */
         ExecutorService threadPool2 = Executors.newCachedThreadPool();
 
+        /**
+         * 一个拥有多个任务队列的线程池，可以减少连接数，创建当前可用cpu数量的线程来并行执行。
+         */
+        ExecutorService executorService = Executors.newWorkStealingPool();
+
+        /**
+         * newSingleThreadScheduledExecutor() 和 newScheduledThreadPool(int corePoolSize)，
+         * 创建的是个 ScheduledExecutorService，可以进行定时或周期性的工作调度，区别在于单一工作线程还是多个工作线程。
+         */
+        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(10);
         try {
             for (int i = 0; i < 10; i++) {
                 threadPool.execute(() -> {

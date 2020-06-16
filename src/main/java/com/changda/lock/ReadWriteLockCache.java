@@ -7,7 +7,7 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 // 缓存示例
-public class CacheDataDemo {
+public class ReadWriteLockCache {
     // 创建一个map用于缓存
     private final Map<String, Object> map = new HashMap<>();
     private static final ReadWriteLock rwl = new ReentrantReadWriteLock();

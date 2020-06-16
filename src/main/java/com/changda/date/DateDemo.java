@@ -1,4 +1,4 @@
-package com.changda.demo;
+package com.changda.date;
 
 import org.junit.Test;
 
@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 import java.util.Date;
@@ -132,6 +133,13 @@ public class DateDemo {
 //        LocalDateTime newDateTime = now.with(firstDayOfNextMonth);
         LocalDateTime newDateTime = now.with(TemporalAdjusters.firstDayOfNextYear());
         System.out.println(newDateTime);
+    }
+
+    @Test
+    public void nowDate() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-hh HH:mm:ss");
+        System.out.println(formatter.format(LocalDate.now().atTime(LocalTime.MAX)));
+        System.out.println(formatter.format(LocalDate.now().atTime(LocalTime.MIN)));
     }
 
 

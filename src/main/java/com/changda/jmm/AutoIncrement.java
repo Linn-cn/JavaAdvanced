@@ -16,20 +16,19 @@ public class AutoIncrement {
     }
 
     public static void main(String[] args) {
-        System.out.println(1/2);
-//        final AutoIncrement autoIncrement = new AutoIncrement();
-//        for (int i = 0; i < 10; i++) {
-//            new Thread(() -> {
-//                for (int j = 0; j < 10000; j++)
-//                    autoIncrement.autoIncrement();
-//            }, "线程" + i).start();
-//        }
-//
-//        //保证前面的线程都执行完，之所以大于2是因为idea中还有一个Monitor Ctrl-Break 线程
-//        while (Thread.activeCount() > 2) {
-//            Thread.yield();
-//        }
-//        Thread.currentThread().getThreadGroup().list();
-//        System.out.println(autoIncrement.inc);
+       final AutoIncrement autoIncrement = new AutoIncrement();
+       for (int i = 0; i < 10; i++) {
+           new Thread(() -> {
+               for (int j = 0; j < 10000; j++)
+                   autoIncrement.autoIncrement();
+           }, "线程" + i).start();
+       }
+
+       //保证前面的线程都执行完，之所以大于2是因为idea中还有一个Monitor Ctrl-Break 线程
+       while (Thread.activeCount() > 2) {
+           Thread.yield();
+       }
+       Thread.currentThread().getThreadGroup().list();
+       System.out.println(autoIncrement.inc);
     }
 }

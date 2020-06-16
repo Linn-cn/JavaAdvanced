@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author: 南街
  * @create: 2020-01-10 21:51
  **/
-public class MyFairLock extends Thread {
+public class FairLockDemo extends Thread {
     /**
      * ReentrantLock默认为非公平锁，但是可以通过构造方法创建公平锁
      */
@@ -34,7 +34,7 @@ public class MyFairLock extends Thread {
     }
 
     public static void main(String[] args) {
-        MyFairLock myFairLock = new MyFairLock();
+        FairLockDemo myFairLock = new FairLockDemo();
         Runnable runnable = () -> {
             System.out.println(Thread.currentThread().getName() + "启动");
             myFairLock.fairLock();

@@ -24,7 +24,7 @@ class MyThread implements Callable<Integer>{
  **/
 public class CallableDemo {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        FutureTask futureTask = new FutureTask(new MyThread());
+        FutureTask<Integer> futureTask = new FutureTask<>(new MyThread());
         new Thread(futureTask,"A").start();
         System.out.println(futureTask.get());
         System.out.println(Thread.currentThread().getName() + "计算完成");

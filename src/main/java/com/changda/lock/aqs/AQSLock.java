@@ -9,7 +9,6 @@ import java.util.concurrent.locks.Lock;
 public class AQSLock implements Lock {
     // 抽象工具类AQS
     MyAQS aqs = new MyAQS(){
-
         @Override
         public boolean tryAcquire() {
             final Thread thread = Thread.currentThread();

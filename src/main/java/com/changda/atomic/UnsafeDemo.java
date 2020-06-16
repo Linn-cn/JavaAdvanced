@@ -1,11 +1,11 @@
-package com.changda.lock;
+package com.changda.atomic;
 
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
 
 public class UnsafeDemo {
-    volatile int value = 0;
+    int value = 0;
 
     static Unsafe unsafe; // 直接操作内存，修改对象，数组内存....强大的API
     private static long valueOffset;

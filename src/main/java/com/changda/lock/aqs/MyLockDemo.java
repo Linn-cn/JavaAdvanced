@@ -5,15 +5,16 @@ import java.util.concurrent.locks.Lock;
 public class MyLockDemo {
     volatile int i = 0;
 
-    Lock lock = new AQSLock();
+    // Lock lock = new AQSLock();
+    Lock lock = new MyLock();
 
     public void add() { // 参考我的源码注释。
         lock.lock();
         try {
             System.out.println("....");
-            lock.lock();
+            // lock.lock();
             i++;
-            lock.unlock();
+            // lock.unlock();
         }finally {
             lock.unlock();
         }

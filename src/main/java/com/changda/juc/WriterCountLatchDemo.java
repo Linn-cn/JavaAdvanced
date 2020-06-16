@@ -13,9 +13,8 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author: 南街
  * @create: 2020-01-15 13:31
  **/
-public class LegacyCountLatchDemo {
+public class WriterCountLatchDemo {
 
-//    public static final Logger logger = Logger.getLogger(LegacyCountLatchDemo.class.getSimpleName());
 
     public static void main(String[] args) throws InterruptedException {
         // 倒计数5
