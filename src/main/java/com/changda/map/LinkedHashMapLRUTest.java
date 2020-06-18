@@ -15,6 +15,7 @@ import java.util.Map;
 public class LinkedHashMapLRUTest {
     public static void main(String[] args) {
         // 新建 LinkedHashMap
+        // accessOrder 开启LRU
         LinkedHashMap<Integer, Integer> map = new LinkedHashMap<Integer, Integer>(4,0.75f,true) {
             {
                 put(10, 10);
