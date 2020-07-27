@@ -1,6 +1,4 @@
-package com.changda.observe;
-
-import java.util.Objects;
+package com.changda.design.observe;
 
 /**
  * @program: JucAndJvm

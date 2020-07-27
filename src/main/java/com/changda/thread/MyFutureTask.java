@@ -20,7 +20,7 @@ public class MyFutureTask<T> implements Runnable {
         this.callable = callable;
     }
 
-    // 返回结果
+    // 返回结果Future
     public T get() {
         // 如果没有结束，那么调用get方法的线程，就应该进入等待
         return result;

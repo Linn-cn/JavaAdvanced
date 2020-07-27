@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  * @create 2020-03-22 11:11
  **/
-public class CASDemo {
+public class AtomicIntegerDemo {
     public static void main(String[] args) {
         AtomicInteger atomicInteger = new AtomicInteger(5);
         System.out.println(atomicInteger.compareAndSet(5,2019));

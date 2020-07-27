@@ -1,26 +1,18 @@
 package com.changda.classloader;
 
 /**
- * @program: JucAndJvm
- * @classname: User
- * @description:
- * @author: 南街
- * @create: 2019-12-22 13:28
+ * @author Linn-cn
+ * @classname Simple
+ * @description
+ * @create 2020-07-13 23:02
  **/
 public class Simple {
-    {
-        System.out.println("代码块");
-    }
 
     static {
         System.out.println("静态代码块");
     }
 
     public Simple() {
-        System.out.println("构造器");
-    }
-
-    public void simpleSout(){
-        System.out.println("调用方法");
+        System.out.println("调用构造");
     }
 }
