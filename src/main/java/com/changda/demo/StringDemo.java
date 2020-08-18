@@ -1,5 +1,7 @@
 package com.changda.demo;
 
+import java.lang.reflect.Field;
+
 /**
  * @program: JucAndJvm
  * @classname: StringDemo
@@ -8,13 +10,20 @@ package com.changda.demo;
  * @create: 2019-12-23 10:13
  **/
 public class StringDemo {
-    public static void main(String[] args) {
-        Integer a = 1;
-        Integer b = 2;
-        System.out.println(a + "::" + b);
-//        String pig = "length:11";
-//        System.out.println(pig.substring(pig.lastIndexOf(":") + 1));
-//        final String dog = "length: " + pig.length();
-//        System.out.println("Animals are equals:" + (pig == dog));
+    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
+        // case 1
+        // String a = "abc";
+        // String b = new String("abc");
+        // b = b.intern();
+        // System.out.println(a == b);
+
+        String s = "abc";
+        Field field = String.class.getDeclaredField("value");
+        // private -> 可访问的
+        field.setAccessible(true);
+        char[] values = (char[]) field.get(s);
+        values[0] = 'd';
+
+        System.out.println(s);
     }
 }

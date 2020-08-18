@@ -1,38 +1,26 @@
 package com.changda.lock;
 
-// 不用读写锁
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
+/**
+ * @description 读写锁降级，不支持升级
+ * @author Linn-cn
+ * @create 2020/8/18
+ */
 public class ReentrantReadWriteLockDemo1 {
+    final static ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
+
     public static void main(String[] args)  {
-        final ReentrantReadWriteLockDemo1 readWriteLockDemo1 = new ReentrantReadWriteLockDemo1();
-        // 多线程同时读/写
-        new Thread(() -> {
-            readWriteLockDemo1.read(Thread.currentThread());
-        }).start();
-
-        new Thread(() -> {
-            readWriteLockDemo1.write(Thread.currentThread());
-        }).start();
-
-        new Thread(() -> {
-            readWriteLockDemo1.read(Thread.currentThread());
-        }).start();
+        /**
+         * 这段代码会打印出“获取到了读锁”，但是却不会打印出“成功升级”，因为 ReentrantReadWriteLock 不支持读锁升级到写锁。
+         */
+        upgrade();
     }
 
-    // 不管读写，只有一个线程能用， 独享锁
-    public synchronized void read(Thread thread) { // 2秒
-        long start = System.currentTimeMillis();
-        while(System.currentTimeMillis() - start <= 1) {
-            System.out.println(thread.getName()+"正在进行“读”操作");
-        }
-        System.out.println(thread.getName()+"“读”操作完毕");
-    }
-
-    /** 写 */
-    public synchronized void write(Thread thread) {
-        long start = System.currentTimeMillis();
-        while(System.currentTimeMillis() - start <= 1) {
-            System.out.println(thread.getName()+"正在进行“写”操作");
-        }
-        System.out.println(thread.getName()+"“写”操作完毕");
+    public static void upgrade(){
+        rwl.readLock().lock();
+        System.out.println("获取到了读锁");
+        rwl.writeLock().lock();
+        System.out.println("成功升级");
     }
 }

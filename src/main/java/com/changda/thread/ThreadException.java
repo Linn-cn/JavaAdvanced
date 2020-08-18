@@ -3,7 +3,7 @@ package com.changda.thread;
 /**
  * @program: JucAndJvm
  * @classname: ThreadException
- * @description:
+ * @description: 线程异常处理
  * @author: 南街
  * @create: 2019-12-22 12:01
  **/

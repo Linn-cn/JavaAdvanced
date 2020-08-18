@@ -58,15 +58,11 @@ public class ReadWriteLockDemo {
         MyCache cache = new MyCache();
         for (int i = 0; i < 5; i++) {
             final int tempInt = i;
-            new Thread(() -> {
-                cache.put(String.valueOf(tempInt), String.valueOf(tempInt));
-            }, String.valueOf(i)).start();
+            new Thread(() -> cache.put(String.valueOf(tempInt), String.valueOf(tempInt)), String.valueOf(i)).start();
         }
         for (int i = 0; i < 5; i++) {
             final int tempInt = i;
-            new Thread(() -> {
-                cache.get(String.valueOf(tempInt));
-            }, String.valueOf(i)).start();
+            new Thread(() -> cache.get(String.valueOf(tempInt)), String.valueOf(i)).start();
         }
     }
 }
