@@ -6,12 +6,9 @@ import java.util.function.LongBinaryOperator;
 // LongAdder增强版，处理累加之外，可以自行定义其他计算
 public class LongAccumulatorDemo {
     public static void main(String[] args) throws InterruptedException {
-        LongAccumulator accumulator = new LongAccumulator(new LongBinaryOperator() {
-            @Override
-            public long applyAsLong(long left, long right) {
-                // 返回最大值，这就是自定义的计算
-                return left > right ? left : right;
-            }
+        LongAccumulator accumulator = new LongAccumulator((left, right) -> {
+            // 返回最大值，这就是自定义的计算
+            return left > right ? left : right;
         }, 0);
 
         // 1000个线程
