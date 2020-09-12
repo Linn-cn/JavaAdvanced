@@ -1,4 +1,4 @@
-package com.changda.pool;
+package com.changda.pool.data;
 
 import javax.sql.DataSource;
 import java.io.PrintWriter;

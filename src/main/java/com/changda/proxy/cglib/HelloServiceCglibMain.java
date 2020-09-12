@@ -1,7 +1,6 @@
-package com.changda.proxy;
+package com.changda.proxy.cglib;
 
-import net.sf.cglib.beans.BeanCopier;
-import net.sf.cglib.core.DebuggingClassWriter;
+import com.changda.proxy.HelloServiceImpl;
 import net.sf.cglib.proxy.Enhancer;
 
 /**

@@ -1,4 +1,4 @@
-package com.changda.pool;
+package com.changda.pool.data;
 
 import java.sql.Connection;
 import java.sql.SQLException;

@@ -1,4 +1,4 @@
-package com.changda.proxy;
+package com.changda.proxy.cglib;
 
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;

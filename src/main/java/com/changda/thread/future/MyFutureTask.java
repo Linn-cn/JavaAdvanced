@@ -1,4 +1,4 @@
-package com.changda.thread;
+package com.changda.thread.future;
 
 import java.util.concurrent.Callable;
 

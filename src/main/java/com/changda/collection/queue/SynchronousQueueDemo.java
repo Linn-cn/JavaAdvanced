@@ -14,10 +14,24 @@ public class SynchronousQueueDemo {
         SynchronousQueue<Object> queue = new SynchronousQueue<>();
         // SynchronousQueue是无空间，offer永远返回false;
         // SynchronousQueue take方法会被阻塞，必须被其他线程显示地调用 put
-        System.out.println("offer(1) = " + queue.offer(1));
-        System.out.println("offer(2) = " + queue.offer(2));
-        System.out.println("offer(3) = " + queue.offer(3));
-        System.out.println("take = " + queue.take());
+        new Thread(() -> {
+            try {
+                queue.put(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+        // System.out.println("offer(1) = " + queue.put(1););
+        // System.out.println("offer(2) = " + queue.offer(2));
+        // System.out.println("offer(3) = " + queue.offer(3));
+        new Thread(() -> {
+            try {
+                System.out.println("take = " + queue.take());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
+        // System.out.println("take = " + queue.take());
         System.out.println("size = " + queue.size());
     }
 }

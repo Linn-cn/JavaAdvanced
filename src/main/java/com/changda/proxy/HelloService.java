@@ -9,6 +9,4 @@ package com.changda.proxy;
  **/
 public interface HelloService {
     void sayHello(String name);
-
-    void sayHello1(String name);
 }
