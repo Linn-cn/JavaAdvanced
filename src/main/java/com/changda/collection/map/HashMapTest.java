@@ -1,4 +1,4 @@
-package com.changda.map;
+package com.changda.collection.map;
 
 import java.util.HashMap;
 

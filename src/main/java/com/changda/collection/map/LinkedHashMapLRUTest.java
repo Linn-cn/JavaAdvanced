@@ -1,17 +1,15 @@
-package com.changda.map;
+package com.changda.collection.map;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * @author 南街
- * @program JavaAdvanced
- * @classname LinkedHashMapLRUTest
  * @description linkedHashMap的 "LRU最近最少使用机制"
  * 这种策略也叫做 LRU（Least recently used,最近最少使用），大概的意思就是经常访问的元素会被追加到队尾，这样不经常访问的数据自然就靠近队头，
  * 然后我们可以通过设置删除策略，比如当 Map 元素个数大于多少时，把头节点删除
- * @create 2020-03-18 21:05
- **/
+ * @author Linn-cn
+ * @date 2020/9/22
+ */
 public class LinkedHashMapLRUTest {
     public static void main(String[] args) {
         // 新建 LinkedHashMap

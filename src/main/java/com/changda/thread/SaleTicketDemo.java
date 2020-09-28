@@ -30,7 +30,7 @@ class Ticket   //资源类 = 实例变量 + 实例方法
  * @author: 南街
  * @create: 2019-11-19 15:10
  **/
-public class SaleTicketDemo01 {
+public class SaleTicketDemo {
     public static void main(String[] args) {    //主线程,一切程序的入口
         Ticket ticket = new Ticket();
         new Thread(() -> { for (int i = 0; i < 40; i++) ticket.sale(); }, "A").start();

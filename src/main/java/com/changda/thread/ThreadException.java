@@ -15,9 +15,9 @@ public class ThreadException {
         Thread thread = new Thread(() -> {
             throw new RuntimeException("错误信息");
         },"t1");
-        thread.setUncaughtExceptionHandler((Thread t, Throwable e) -> {
-            System.out.println(t.getName() + ":" + e.getMessage());
-        });
+        // thread.setUncaughtExceptionHandler((Thread t, Throwable e) -> {
+        //     System.out.println(t.getName() + ":" + e.getMessage());
+        // });
         thread.start();
         thread.join();
         System.out.println("错误");
