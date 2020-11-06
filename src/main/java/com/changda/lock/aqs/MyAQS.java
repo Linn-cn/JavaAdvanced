@@ -5,22 +5,32 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.LockSupport;
 
-// 抽象队列同步器
-// state， owner， waiters
+/**
+ * 抽象队列同步器
+ */
 public class MyAQS {
-    // acquire、 acquireShared ： 定义了资源争用的逻辑，如果没拿到，则等待。
+    // acquire、 acquireShared ： 定义了资源争用的逻辑，如果没拿到，则等待。不需要子类去重写
     // tryAcquire、 tryAcquireShared ： 实际执行占用资源的操作，如何判定一个由使用者具体去实现。
     // release、 releaseShared ： 定义释放资源的逻辑，释放之后，通知后续节点进行争抢。
     // tryRelease、 tryReleaseShared： 实际执行资源释放的操作，具体的AQS使用者去实现。
 
-    // 如何判断一个资源的拥有者
+    /**
+     * 如何判断一个资源的拥有者
+     */
     public volatile AtomicReference<Thread> owner = new AtomicReference<>();
-    // 保存 正在等待的线程
+    /**
+     * 保存 正在等待的线程
+     */
     public volatile LinkedBlockingQueue<Thread> waiters = new LinkedBlockingQueue<>();
-    // 记录资源状态
+    /**
+     * 记录资源状态
+     */
     public volatile AtomicInteger state = new AtomicInteger(0);
 
-    // 共享资源占用的逻辑，返回资源的占用情况
+    /**
+     * 共享资源占用的逻辑，返回资源的占用情况
+     * @return
+     */
     public int tryAcquireShared(){
         throw new UnsupportedOperationException();
     }
@@ -50,7 +60,8 @@ public class MyAQS {
         if (tryReleaseShared()) {
             // 通知等待者
             for (Thread next : waiters) {
-                LockSupport.unpark(next); // 唤醒
+                // 唤醒
+                LockSupport.unpark(next);
             }
         }
     }
@@ -70,11 +81,13 @@ public class MyAQS {
                 addQ = false;
             } else {
                 // 阻塞 挂起当前的线程，不要继续往下跑了
-                LockSupport.park(); // 伪唤醒，就是非unpark唤醒的
+                // 伪唤醒，就是非unpark唤醒的
+                LockSupport.park();
             }
         }
         if(!addQ){
-            waiters.remove(Thread.currentThread()); // 把线程移除
+            // 把线程移除
+            waiters.remove(Thread.currentThread());
         }
     }
 
@@ -86,7 +99,8 @@ public class MyAQS {
         if (tryRelease()) {
             // 通知等待者
             for (Thread next : waiters) {
-                LockSupport.unpark(next); // 唤醒
+                // 唤醒
+                LockSupport.unpark(next);
             }
         }
     }

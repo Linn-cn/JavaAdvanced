@@ -587,14 +587,19 @@ public abstract class AbstractQueuedSynchronizer
      * @return node's predecessor
      */
     private Node enq(final Node node) {
-        for (;;) { // CAS + 循环 = 自旋
+        // 不断自旋
+        for (;;) {
             Node t = tail;
-            if (t == null) { // Must initialize 队列为空
-                if (compareAndSetHead(new Node()))// 创建一个空的标志结点作为head结点
-                    tail = head; // tail 和 head都是同一个节点
+            // 当前队列为empty
+            if (t == null) {
+                // 完成队列初始化操作，头结点中不放数据，只是作为起始标记，lazy-load，在第一次用的时候new
+                if (compareAndSetHead(new Node()))
+                    tail = head;
             } else {
                 node.prev = t;
-                if (compareAndSetTail(t, node)) { // 放入tail尾部
+                // 不断将当前节点使用CAS尾插入队列中直到成功为止
+                // compareAndSetTail(t, node) 判断尾部节点是不是t，是的话就将尾部指向node
+                if (compareAndSetTail(t, node)) {
                     t.next = node;
                     return t;
                 }
@@ -609,17 +614,21 @@ public abstract class AbstractQueuedSynchronizer
      * @return the new node
      */
     private Node addWaiter(Node mode) {
-        Node node = new Node(Thread.currentThread(), mode);//EXCLUSIVE（独占）和SHARED（共享）
-        // Try the fast path of enq; backup to full enq on failure
+        // 将当前线程以指定的模式创建节点node
+        Node node = new Node(Thread.currentThread(), mode);
+        // 获取当前等待队列的尾节点
         Node pred = tail;
-        if (pred != null) {// 直接放到队尾。
+        // 队列不为空，将新的node加入等待队列中
+        if (pred != null) {
             node.prev = pred;
+            // CAS方式将当前节点尾插入队列中
             if (compareAndSetTail(pred, node)) {
                 pred.next = node;
                 return node;
             }
         }
-        enq(node);// 按正常逻辑入队列
+        // 当队列为empty或者CAS失败时会调用enq方法处理
+        enq(node);
         return node;
     }
 
@@ -861,22 +870,31 @@ public abstract class AbstractQueuedSynchronizer
      * @return {@code true} if interrupted while waiting
      */
     final boolean acquireQueued(final Node node, int arg) {
+        // 是否已获取锁的标志，默认为true 即为尚未
         boolean failed = true;
         try {
-            boolean interrupted = false; // 当前线程释放中断的标志位
-            for (;;) {// 不断尝试
-                final Node p = node.predecessor(); // 获取前一个节点
-                if (p == head && tryAcquire(arg)) { // 如果前一个节点是head，尝试抢一次锁
-                    setHead(node); // 更换head
+            // 等待中是否被中断过的标记
+            boolean interrupted = false;
+            for (;;) {
+                // 获取当前节点的前节点
+                final Node p = node.predecessor();
+                // 如果前节点是头结点，则意味着自己是第一个排队的节点，尝试获取锁
+                if (p == head && tryAcquire(arg)) {
+                    // 获得锁成功后将当前节点设置为头结点
+                    setHead(node);
                     p.next = null; // help GC
                     failed = false;
                     return interrupted;
                 }
-                if (shouldParkAfterFailedAcquire(p, node) &&// 检查状态，是否需要挂起线程
-                    parkAndCheckInterrupt())// 如果需要挂起，则通过Park进入停车场挂起
-                    interrupted = true; // 如果出现中断，则修改标记
+                // shouldParkAfterFailedAcquire翻译过来“在获取锁失败之后应该等待”
+                // shouldParkAfterFailedAcquire根据对当前节点的前一个节点的状态进行判断，对当前节点做出不同的操作
+                // parkAndCheckInterrupt让线程进入等待状态，并检查当前线程是否被可以被中断
+                if (shouldParkAfterFailedAcquire(p, node) &&
+                        parkAndCheckInterrupt())
+                    interrupted = true;
             }
         } finally {
+            // 将当前节点设置为取消状态(Node.CANCELLED),为1
             if (failed)
                 cancelAcquire(node);
         }
@@ -1201,8 +1219,11 @@ public abstract class AbstractQueuedSynchronizer
      *        can represent anything you like.
      */
     public final void acquire(int arg) {
-        if (!tryAcquire(arg) && // 判断是否拿到锁
-            acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
+        // 判断是否获得锁
+        if (!tryAcquire(arg) &&
+                // 获得锁失败则将当前线程变成Node节点add进等待队列
+                // Node.EXCLUSIVE互斥模式、Node.SHARED共享模式
+                acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
             selfInterrupt();
     }
 

@@ -16,11 +16,17 @@ import java.util.concurrent.locks.LockSupport;
  * @create 2020-05-13 20:24
  **/
 public class MyLock implements Lock {
-    // 如何判断一个资源的拥有者
+    /**
+     * 如何判断一个资源的拥有者
+     */
     public volatile AtomicReference<Thread> owner = new AtomicReference<>();
-    // 保存 正在等待的线程
+    /**
+     * 保存 正在等待的线程
+     */
     public volatile LinkedBlockingQueue<Thread> waiters = new LinkedBlockingQueue<>();
-    // 同步资源状态
+    /**
+     * 同步资源状态
+     */
     public volatile AtomicInteger state = new AtomicInteger(0);
 
     @Override
