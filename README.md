@@ -22,5 +22,6 @@
 * reflect = 反射
 * regex = 正则
 * thread = 线程
+* cache = 手写缓存实现
 
 ### demo包用于部分案例测试
