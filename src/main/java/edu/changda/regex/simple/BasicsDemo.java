@@ -2,6 +2,12 @@ package edu.changda.regex.simple;
 
 import org.junit.Test;
 
+import java.beans.Encoder;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.regex.Pattern;
 
 /**
@@ -31,9 +37,15 @@ public class BasicsDemo {
     }
 
     @Test
-    public void test3(){
-        Pattern pattern = Pattern.compile("1[3-9]\\d{9}");
-        System.out.println(pattern.pattern());
-        System.out.println(pattern.matcher("13973568055").matches());
+    public void test3() throws UnsupportedEncodingException {
+        BigInteger bigInteger = new BigInteger("110101", 2);
+        System.out.println(bigInteger.toString());
+        BigInteger bg = new BigInteger("53");
+        System.out.println(bg.toString());
+    }
+
+    @Test
+    public void test4(){
+        System.out.println("139735{6}8055".replaceAll("[{}]",""));
     }
 }

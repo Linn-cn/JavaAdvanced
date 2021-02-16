@@ -7,7 +7,7 @@ package edu.changda.design.watch;
  * @author: 朱林
  * @create: 2020-01-04 18:48
  **/
-public interface Observerable {
+public interface Observable {
     /**
      * 注册观察者
      * @param o

@@ -15,13 +15,13 @@
 * juc = Java并发包
 * load_balance = 负载均衡
 * lock = 锁机制
-* map = Hash表
 * pool = 池化机制
-* proxy = 代理模式
+* proxy = 动态代理、静态代理
 * reference = Java引用机制
 * reflect = 反射
 * regex = 正则
-* thread = 线程
+* thread = 线程知识点
 * cache = 手写缓存实现
+* serialize = 序列化
 
 ### demo包用于部分案例测试

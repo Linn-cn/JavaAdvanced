@@ -1,4 +1,4 @@
-package edu.changda.design.observe;
+package edu.changda.design.consumer;
 
 import java.util.concurrent.TimeUnit;
 

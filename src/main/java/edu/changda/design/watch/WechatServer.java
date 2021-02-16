@@ -10,7 +10,7 @@ import java.util.List;
  * @author: 朱林
  * @create: 2020-01-04 18:53
  **/
-public class WechatServer implements Observerable {
+public class WechatServer implements Observable {
     /**
      * 观察者集合
      */
