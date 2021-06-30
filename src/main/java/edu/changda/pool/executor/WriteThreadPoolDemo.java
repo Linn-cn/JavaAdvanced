@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author: 南街
  * @create: 2019-12-15 17:02
  **/
-public class ThreadPoolWriteDemo {
+public class WriteThreadPoolDemo {
     public static void main(String[] args) {
         ExecutorService threadPoolExecutor = new ThreadPoolExecutor(
                 // 线程池中的常驻核心线程数

@@ -1,12 +1,5 @@
 package edu.changda.pool.executor;
 
-/**
- * @author 南街
- * @program JavaAdvanced
- * @classname ThreadPoolExecutorTest
- * @description
- * @create 2020-04-25 19:47
- **/
 
 import org.junit.Test;
 
@@ -16,7 +9,7 @@ import java.util.concurrent.*;
 /**
  * 线程池的使用
  */
-public class ThreadPoolExecutorTest {
+public class CustomThreadPoolExecutor {
 
     /**
      * 测试： 提交15个执行时间需要3秒的任务,看线程池的状况
@@ -287,7 +280,7 @@ public class ThreadPoolExecutorTest {
 //		new ThreadPoolExecutorTest().threadPoolExecutorTest3();
 //		new ThreadPoolExecutorTest().threadPoolExecutorTest4();
 //		new ThreadPoolExecutorTest().threadPoolExecutorTest5();
-		new ThreadPoolExecutorTest().threadPoolExecutorTest6();
+		new CustomThreadPoolExecutor().threadPoolExecutorTest6();
 //		new ThreadPoolExecutorTest().threadPoolExecutorTest7();
 //		new ThreadPoolExecutorTest().threadPoolExecutorTest8();
     }

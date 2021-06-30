@@ -12,9 +12,11 @@ import java.util.concurrent.*;
 public class CancellableFutureQuestion {
 
     public static void main(String[] args) {
+
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-        Future<?> future = executorService.submit(() -> {  // 3 秒内执行完成，才算正常
+        // 3 秒内执行完成，才算正常
+        Future<?> future = executorService.submit(() -> {
             action(3);
         });
 
@@ -36,12 +38,13 @@ public class CancellableFutureQuestion {
     private static void action(int seconds){
         try {
             TimeUnit.SECONDS.sleep(seconds);
-            if (Thread.interrupted()) { // 判断并且清除中断状态
+            // 判断并且清除中断状态
+            if (Thread.interrupted()) {
                 return;
             }
             action();
         } catch (InterruptedException e) {
-//            e.printStackTrace();
+           e.printStackTrace();
         }
     }
 
