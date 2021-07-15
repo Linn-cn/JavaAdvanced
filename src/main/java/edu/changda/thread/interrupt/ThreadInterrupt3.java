@@ -15,7 +15,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 写两个线程，线程1添加10个元素到容器中，线程2实现监控元素的个数，
  * 当个数到5个时，线程2给出提示并结束线程2
  *
- * 用countDownLatch解决
+ * 用Condition解决
  * @create 2020-02-27 11:03
  **/
 public class ThreadInterrupt3 {
