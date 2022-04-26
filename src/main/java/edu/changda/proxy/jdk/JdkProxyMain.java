@@ -11,10 +11,8 @@ import java.lang.reflect.Proxy;
  */
 public class JdkProxyMain {
     public static void main(String[] args) {
-        HelloService helloService = (HelloService) Proxy.newProxyInstance(JdkProxyMain.class.getClassLoader(),
-                new Class[]{HelloService.class},
-                new HelloServiceInvocationHandler(new HelloServiceImpl())
-        );
-        helloService.sayHello("Linn");
+        HelloService helloService = (HelloService) new HelloServiceInvocationHandler(new HelloServiceImpl()).getProxy();
+        String name = helloService.sayHello("Linn");
+        System.out.println(name);
     }
 }

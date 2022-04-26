@@ -1,9 +1,10 @@
 # Java 基础知识学习案例
 
-### package分类
-
+## package分类
+示例：包名 = 作用
 * atomic = 原子类
 * bloom = 布隆过滤器
+* cache = 手写缓存实现 
 * classloader = 类加载器
 * cloneable = 克隆
 * collection = 集合
@@ -21,7 +22,7 @@
 * reflect = 反射
 * regex = 正则
 * thread = 线程知识点
-* cache = 手写缓存实现
 * serialize = 序列化
+* jndi = Java命名和目录接口
 
-### demo包用于部分案例测试
+> demo包用于部分案例测试

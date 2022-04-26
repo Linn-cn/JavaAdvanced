@@ -2,6 +2,7 @@ package edu.changda.proxy.jdk;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 /**
  * @author Linn-cn
@@ -18,9 +19,15 @@ public class HelloServiceInvocationHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("我是jdk动态代理 --- begin");
-        // method.invoke(target, args);
+        Object result = method.invoke(target, args);
         System.out.println("我是jdk动态代理 --- end");
-        return null;
+        return result;
+    }
+
+    public Object getProxy(){
+        return Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
+          target.getClass().getInterfaces(),
+          this);
     }
 
 }

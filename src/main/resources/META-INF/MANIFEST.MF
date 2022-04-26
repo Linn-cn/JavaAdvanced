@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Implementation-Version: 0.0.1-SNAPSHOT
+Premain-Class: edu.changda.agent.AgentDemo
+Can-Redefine-Classes: true

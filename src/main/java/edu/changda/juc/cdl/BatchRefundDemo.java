@@ -1,7 +1,5 @@
 package edu.changda.juc.cdl;
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
@@ -11,7 +9,6 @@ import java.util.stream.Collectors;
  * @author Linn-cn
  * @create 2020/09/23
  */
-@Slf4j
 public class BatchRefundDemo {
 
     public static final ExecutorService EXECUTOR_SERVICE = new ThreadPoolExecutor(
@@ -53,9 +50,9 @@ public class BatchRefundDemo {
             // 收集批量退款的结果
             futures.add(future);
         }
-        log.info("30 个商品已经在退款中");
+        System.out.println("30 个商品已经在退款中");
         latch.await();
-        log.info("30 个商品已经在退款中");
+        System.out.println("30 个商品已经在退款中");
         // 拿到所有结果进行分析
         List<Boolean> result = futures.stream().map(fu -> {
             try {
@@ -68,6 +65,7 @@ public class BatchRefundDemo {
         }).collect(Collectors.toList());
         // 打印结果统计
         long success = result.stream().filter(r -> r.equals(true)).count();
-        log.info("执行结果成功{},失败{}", success, result.size() - success);
+        System.out.println(String.format("执行结果成功%d,失败%d",success, result.size() - success));
+        EXECUTOR_SERVICE.shutdown();
     }
 }

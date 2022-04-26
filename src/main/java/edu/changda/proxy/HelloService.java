@@ -8,5 +8,5 @@ package edu.changda.proxy;
  * @create: 2019-12-24 11:32
  **/
 public interface HelloService {
-    void sayHello(String name);
+    String sayHello(String name);
 }

@@ -9,7 +9,8 @@ package edu.changda.proxy;
  **/
 public class HelloServiceImpl implements HelloService {
     @Override
-    public void sayHello(String name) {
-        System.out.println("Hello" + name);
+    public String sayHello(String name) {
+        System.out.println("Hello，" + name);
+        return name;
     }
 }

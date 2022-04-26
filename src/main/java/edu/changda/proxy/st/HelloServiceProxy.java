@@ -18,9 +18,10 @@ public class HelloServiceProxy implements HelloService {
     }
 
     @Override
-    public void sayHello(String name) {
+    public String sayHello(String name) {
       log.info("静态代理 start");
       service.sayHello(name);
       log.info("静态代理 end");
+      return name;
     }
 }
