@@ -2,12 +2,8 @@ package edu.changda.regex.simple;
 
 import org.junit.Test;
 
-import java.beans.Encoder;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.regex.Pattern;
 
 /**
