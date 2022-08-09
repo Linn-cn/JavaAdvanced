@@ -8,13 +8,8 @@ import java.util.Arrays;
  */
 public class Demo {
     public static void main(String[] args) {
-        // System.out.println(Character.toChars(91 - 1));
-        // for (int i = 0; i < 100; i++ ){
-        //     System.out.println(intToAZ(701));
-        // }
-        // System.out.println(strToBytes("000c29be-6c340000-5a0ec7f6-21ae8e6b"));
-        System.out.println(-1%3);
-        System.out.println((double)-1/3);
+        int a = 8;
+        System.out.println(a>>1);
     }
 
     /**

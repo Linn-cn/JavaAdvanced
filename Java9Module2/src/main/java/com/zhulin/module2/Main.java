@@ -1,3 +1,5 @@
+package com.zhulin.module2;
+
 import com.zhulin.module1.service.UserService;
 
 public class Main {
