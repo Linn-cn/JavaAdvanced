@@ -1,4 +1,4 @@
-package edu.changda.design;
+package edu.changda.design.singleton;
 
 /**
  * @program: JucAndJvm
